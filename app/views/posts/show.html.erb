@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><%= @post.title %></h3></div>
+    <div class="panel-body">
+      <p><%= @post.content %></p>
+      <span class="time_created">
+        <%= @post.created_at %>
+      </span>
+      <% if current_user && current_user.admin? %>
+        <%= link_to "DELETE", @post, method: :delete, :id => "delete-btn", :class => "pull-right", data: {confirm: "Are you sure?"} %>
+      <% end %>
+    </div>
+</div>
+
+
+
+<div class="page-header">
+  <h5 id="all_comments">ALL COMMENTS(<%= @comments.count %>):</h5>
+</div>
+
+<div id="comments">
+    <%= render @comments %>
+</div>
+
+<% if current_user %>
+  <div class="page-header">
+    <h5>YOUR COMMENT:</h5>
+  </div>
+
+  <%= form_for [@post, @new_comment], remote: true, class: "form-horizontal" do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <div class="controls">
+        <%= f.text_area :text , :id => "comment_area" , :placeholder => "Your comment..." %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <%= f.submit "Comment", :id => "sendComment", :class => "btn btn-success pull-right" %>
+      </div>
+    </div>
+    <br><br><br>
+  <% end %>
+<% end %>

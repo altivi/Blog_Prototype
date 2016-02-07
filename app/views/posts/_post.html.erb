@@ -1,0 +1,10 @@
+<%= div_for post, class: "panel panel-default" do %>
+  	<div class="panel-heading">
+  		<h3 class="panel-title"><%= post.title %></h3>
+  	</div>
+	<div class="panel-body">
+		<p><%= post.content %></p>
+		<span class="time_created"><%= post.created_at %></span>
+		<%= link_to "Read more...", post , :class => "pull-right" %>
+  	</div>
+<% end %>

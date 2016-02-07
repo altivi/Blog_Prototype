@@ -1,0 +1,14 @@
+<%= div_for comment do %>
+  <span>
+    <h4>
+      <small><%= comment.user.email %> says:</small>
+      <small class="pull-right" ><%= comment.created_at %></small>
+      <small>
+        <% if current_user == comment.user %>
+          <%= link_to 'Delete', post_comment_path(@post, comment), method: :delete, remote: true %>
+        <% end %>
+      </small>
+    </h4>
+  </span>
+  <div class="well well-sm"><%= comment.text %></div>
+<% end %>

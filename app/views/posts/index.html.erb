@@ -1,0 +1,29 @@
+<div id="posts">
+	<%= render @posts %>
+</div>
+
+
+<% if current_user && current_user.admin? %>
+  <%= form_for :post , remote: true do |f| %>
+  	<fieldset>
+  	<div class="control-group">
+        <div class="controls">
+          <%= f.text_field :title , placeholder: "Post title..." %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <div class="controls">
+          <%= f.text_area :content  , :id => "comment_area", placeholder: "Post content..." %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <!-- Button -->
+        <div class="controls">
+          <%= f.submit "Create", class: "btn btn-success pull-right" %>
+        </div>
+      </div>
+      <br><br><br>
+  <% end %>
+<% end %>

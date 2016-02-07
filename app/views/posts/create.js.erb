@@ -1,0 +1,2 @@
+$('div#posts').append("<%= escape_javascript(render @post) %>");
+$(".panel-body ul").append('<li><%= link_to @post.title , @post %></li>');

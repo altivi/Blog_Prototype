@@ -1,0 +1,57 @@
+#wrapper {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+
+.main_section {
+
+}
+
+.right_section {
+	
+}
+
+.nopadding {
+}
+
+.all_posts {
+	margin-top: 15px;
+}
+
+#collapse_mobile{
+    display: none;
+ }
+
+#ggwp {
+	width: 100%;
+}
+
+@media (max-width: 991px) {
+ #collapse_mobile {
+    display: block;
+ }
+ #extended_desktop {
+	display: none;
+ }
+}
+
+.well-sm {
+	border-radius: 10px;
+}
+
+.collapsed_list ul li a{
+	color: #a7a7a7;
+}
+
+#comment_area {
+    width: 100%;
+    min-height: 100px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    overflow: hidden;
+    resize: vertical;
+}
+#delete-btn {
+	margin-right: 15px;
+}

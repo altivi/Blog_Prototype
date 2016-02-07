@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blog on Rails</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+        <div id="wrapper">
+        <header>
+          <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <%= link_to "MyMicroBlog", root_path , :class => "navbar-brand" %>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><%= link_to "Blog", root_path %></li>
+              <li><%= link_to "About", root_path %></li>
+              <li><%= link_to "Contact", root_path %></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <% if current_user %>
+                <li><%= link_to current_user.email, root_path  %></li>
+                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+              <% else %>
+                <li><%= link_to "Log in", login_path %></a></li>
+                <li><%= link_to "Sign up", signup_path %></a></li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+        </header>
+        <div class="col-md-3 col-md-push-9 right_section">
+          <%= search_form_for @search, url: search_posts_path, method: :post do |f| %>
+          <div class="input-group">
+           <span class="input-group-btn">
+              <div class="actions">
+                <%= f.submit "Search", class: "btn btn-default" %>
+              </div>
+            </span>
+             <div class="field">
+             <%= f.text_field :title_cont, class: "form-control" %>
+           </div>
+           </div>
+          <% end %>
+
+          <!-- <div class="input-group">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+              <input type="text" class="form-control">
+            </div> -->
+          <div class="panel panel-default all_posts" id="extended_desktop"> 
+              <div class="panel-heading"><h3 class="panel-title">ALL POSTS</h3></div>
+              <div class="panel-body collapsed_list">
+                <ul>
+                  <% posts_list.each do |post|%>
+                    <li><%= link_to post.title , post %></li>
+                  <% end %>
+                </ul>
+              </div>
+          </div>
+          <div id="collapse_mobile">
+            <div id="non_collapsed" class="panel panel-default all_posts"> 
+                <div class="panel-heading"><h3 class="panel-title">ALL POSTS</h3></div>
+                <button id="ggwp" class="btn btn-default" type="button" data-toggle="collapse" data-target="#demo">Extend all posts</button>
+              <div id="demo" class="collapse">
+                  <div class="panel-body collapsed_list">
+                    <ul>
+                      <% posts_list.each do |post|%>
+                        <li><%= link_to post.title , post %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-md-pull-3 main_section nopadding">
+           <%= yield %>
+        </div>
+      </div>
+  </body>
+</html>
