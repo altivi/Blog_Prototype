@@ -38,7 +38,7 @@ function fillArray(data){
 function fillComments(newComments){
 	for(var i = comments.length - newComments; i < comments.length; i++){
 		var post = $('<div class="post"></div>');
-		post.html('<h4><small>' + comments[i].email + ' says:' + '</small></h4><div class="well well-sm">' + comments[i].text + '</div');
+		post.html('<h4><small>' + comments[i].user.email + ' says:' + '</small></h4><div class="well well-sm">' + comments[i].text + '</div');
 		$('#comments').append(post);
 	}
 }
