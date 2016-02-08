@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 		@new_comment = Comment.new(post: @post)
 		respond_to do |format|
 			format.html
-			format.json { render :json => @comments.to_json(include: :user, only: [:id, :text]) }
+			format.json { render :json => @comments.to_json(include: :user) }
 			format.js
 		end
 	end
