@@ -73,6 +73,7 @@ function sendComment(){
 	$('html, body').css('scrollTop', $(document).height());
 	*/
 	setTimeout(function(){
+		$('#comment_area').val('');
 		getComments();
 	}, 300);
 }
