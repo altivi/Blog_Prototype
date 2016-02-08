@@ -48,7 +48,7 @@ function fillArray(data){
 }
 
 function fillComments(newComments){
-	for(var i = comments.length - newComments; i < comments.length; i++){
+	for(var i = comments.length - 1; i >= comments.length - newComments; i--){
 		var post = $('<div class="post"></div>');
 		post.css('display', 'none');
 		post.html('<h4><small>' + comments[i].user.email + ' says:' + '</small></h4><div class="well well-sm">' + comments[i].text + '</div');
