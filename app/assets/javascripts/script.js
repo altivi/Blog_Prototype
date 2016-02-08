@@ -1,3 +1,10 @@
+var commentsQueryTimer;
+var comments = new Array();
+var adressPOST = window.location.pathname;
+var adressGET = adressPOST + '.json';
+
+initPage();
+
 function initPage(){
 	
 	$('#sendComment').click(function(event){
@@ -6,25 +13,21 @@ function initPage(){
 	});
 
 	getComments();
-	var commentsQueryTimer = setInterval(function(){ //Parse comments every 5sec
+	commentsQueryTimer = setInterval(function(){ //Parse comments every 5sec
 		getComments();
 	}, 5000);
 
 }
 
-$(function(){
-	initPage();
-});
 $(window).bind('page:change', function(){
+	clearInterval(commentsQueryTimer);
+	comments = new Array();
 	initPage();
 });
-
-var comments = new Array();
-var adressPOST = window.location.pathname;
-var adressGET = adressPOST + '.json';
 
 function getComments(){
 	$.getJSON(adressGET, function(data){
+		console.log('getting comments, getJSON');
 		fillArray(data);
 	});
 }
@@ -49,12 +52,15 @@ function fillArray(data){
 function fillComments(newComments){
 	for(var i = comments.length - newComments; i < comments.length; i++){
 		var post = $('<div class="post"></div>');
+		post.css('display', 'none');
 		post.html('<h4><small>' + comments[i].user.email + ' says:' + '</small></h4><div class="well well-sm">' + comments[i].text + '</div');
 		$('#comments').append(post);
+		post.slideDown();
 	}
 }
 
 function sendComment(){
+	/*
 	var text = $('#comment_area').val();
 	if(text.length == 0){
 		return;
@@ -67,4 +73,8 @@ function sendComment(){
 		}, 300);
 	});
 	$('html, body').css('scrollTop', $(document).height());
+	*/
+	setTimeout(function(){
+		getComments();
+	}, 300);
 }
