@@ -6,7 +6,7 @@ function initPage(){
 	});
 
 	getComments();
-	var commentsQueryTimer = setInterval(function(){ //Parse comments every 10sec
+	var commentsQueryTimer = setInterval(function(){ //Parse comments every 5sec
 		getComments();
 	}, 5000);
 
