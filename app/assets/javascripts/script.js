@@ -1,14 +1,16 @@
 var commentsQueryTimer;
 var comments = new Array();
-var adressPOST = window.location.pathname;
-var adressGET = adressPOST + '.json';
-
-initPage();
+var adressPOST = '';
+var adressGET = '';
 
 function initPage(){
+	console.log('postPageOpened');
+	clearInterval(commentsQueryTimer);
+	comments = new Array();
+	adressPOST = window.location.pathname;
+	adressGET = adressPOST + '.json';
 	
 	$('#sendComment').click(function(event){
-		event.preventDefault();
 		sendComment();
 	});
 
@@ -19,11 +21,7 @@ function initPage(){
 
 }
 
-$(window).bind('page:change', function(){
-	clearInterval(commentsQueryTimer);
-	comments = new Array();
-	initPage();
-});
+//$(window).bind('page:change', initPage);
 
 function getComments(){
 	$.getJSON(adressGET, function(data){
@@ -55,7 +53,7 @@ function fillComments(newComments){
 		post.css('display', 'none');
 		post.html('<h4><small>' + comments[i].user.email + ' says:' + '</small></h4><div class="well well-sm">' + comments[i].text + '</div');
 		$('#comments').append(post);
-		post.slideDown();
+		post.fadeIn();
 	}
 }
 

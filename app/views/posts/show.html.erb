@@ -11,14 +11,6 @@
     </div>
 </div>
 
-
-
-<div class="page-header">
-  <h5 id="all_comments">ALL COMMENTS(<%= @comments.count %>):</h5>
-</div>
-
-<div id="comments"></div>
-
 <% if current_user %>
   <div class="page-header">
     <h5>YOUR COMMENT:</h5>
@@ -40,4 +32,14 @@
     </div>
     <br><br><br>
   <% end %>
+<% end %>
+
+<div class="page-header">
+  <h5 id="all_comments">ALL COMMENTS(<%= @comments.count %>):</h5>
+</div>
+
+<div id="comments"></div>
+
+<%= javascript_tag do %>
+  initPage();
 <% end %>
