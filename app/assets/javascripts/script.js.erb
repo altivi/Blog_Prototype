@@ -16,6 +16,12 @@ function initPage(userId){
 		sendComment();
 	});
 
+	$('#comments').click(function(event){
+		if(event.target.getAttribute('data-method') == 'delete'){
+			$(event.target).closest('.post').fadeOut();
+		}
+	});
+
 	getComments();
 	commentsQueryTimer = setInterval(function(){ //Parse comments every 5sec
 		getComments();
@@ -53,11 +59,15 @@ function fillComments(newComments){
 	for(var i = comments.length - newComments; i < comments.length ; i++){
 		var post = $('<div class="post"></div>');
 		post.css('display', 'none');
-		post.html('<h4><small>' + comments[i].user.email + ' says:' + '</small><small class="pull-right" >' + 
-			comments[i].created_at + '</small>' +
-			 '<small><a data-remote="true" rel="nofollow" data-method="delete" href="/posts/' + comments[i].post_id + '/comments/' + comments[i].id + '">Delete</a></small>' + 
-			 '</h4><div class="well well-sm">' + 
-			comments[i].text + '</div');
+		if(currentUser == comments[i].user.id){
+			post.html('<h4><small>' + comments[i].user.email + ' says:' + '</small><small class="pull-right" >' + comments[i].created_at + '</small><small>'
+			 + '<a data-remote="true" rel="nofollow" data-method="delete" href="/posts/' + comments[i].post_id + '/comments/' + comments[i].id + '">Delete</a>' 
+			 + '</small></h4><div class="well well-sm">' + comments[i].text + '</div');
+		}else{
+			post.html('<h4><small>' + comments[i].user.email + ' says:' + '</small><small class="pull-right" >' + comments[i].created_at + '</small><small>'
+			 + '</small></h4><div class="well well-sm">' + comments[i].text + '</div');
+		}
+		
 		$('#comments').prepend(post);
 		post.fadeIn();
 	}
