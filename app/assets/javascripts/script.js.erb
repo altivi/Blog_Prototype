@@ -2,13 +2,15 @@ var commentsQueryTimer;
 var comments = new Array();
 var adressPOST = '';
 var adressGET = '';
+var currentUser = '';
 
-function initPage(){
+function initPage(userId){
 	console.log('postPageOpened');
 	clearInterval(commentsQueryTimer);
 	comments = new Array();
 	adressPOST = window.location.pathname;
 	adressGET = adressPOST + '.json';
+	currentUser = userId;
 	
 	$('#sendComment').click(function(event){
 		sendComment();
