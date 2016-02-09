@@ -41,5 +41,5 @@
 <div id="comments"></div>
 
 <%= javascript_tag do %>
-  initPage();
+  initPage(<%= current_user.id if current_user %>);
 <% end %>
