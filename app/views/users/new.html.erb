@@ -1,11 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-body">
-   <%= form_for :user , :class => "form-horizontal" do |f| %>
+   <%= form_for @user, :class => "form-horizontal" do |f| %>
 	  <fieldset>
+
 	    <div id="legend">
 	      <legend class="">Sign up</legend>
 	    </div>
-
+			<%= render 'shared/error_messages' %>
 		<div class="control-group">
 	      <!-- First Name -->
 	      <label class="control-label" for="email">First name</label>
@@ -13,7 +14,7 @@
 	        <%= f.text_field :first_name , :class => "input-xlarge"  , :placeholder => "First name" %>
 	      </div>
 	    </div>
-
+		
 	    <div class="control-group">
 	      <!-- Last Name -->
 	      <label class="control-label" for="email">Last name</label>

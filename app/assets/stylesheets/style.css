@@ -64,3 +64,13 @@
 #marked_list li {
 	line-height: 25px;
 }
+
+#error_explanation {
+  color: red;
+}
+
+#error_explanation ul {
+    color: red;
+    margin: 0 0 30px 30px;
+    list-style-type: circle;
+}

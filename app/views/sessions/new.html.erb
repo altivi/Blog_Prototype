@@ -5,6 +5,9 @@
 	    <div id="legend">
 	      <legend class="">Login</legend>
 	    </div>
+	    <% flash.each do |message_type, message| %>
+        	<div class="alert alert-<%= message_type %>"><%= message %></div>
+      	<% end %>
 	    <div class="control-group">
 	      <!-- E-mail -->
 	      <label class="control-label" for="email">E-mail</label>
