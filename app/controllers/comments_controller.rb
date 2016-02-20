@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 	def destroy
 		@post = Post.find(params[:post_id])
 		@comment = @post.comments.find(params[:id])
-		@comment.destroy
+		@comment.destroy if current_user.id == @comment.user_id
 		respond_to do |format|
 			format.html { redirect_to post_url(@post) }
 			format.js

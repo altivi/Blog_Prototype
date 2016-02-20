@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
 
   def search_met
-    @search = Post.search(params[:q])
+    @q = Post.ransack(params[:q])
   end
 
 end

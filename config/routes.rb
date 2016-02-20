@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post '/' => 'posts#create'
   resources :posts do
     resources :comments
-    collection { post :search, to: "posts#index" }
+    # collection { post :search, to: "posts#index" }
   end
   #commentary requests ...
 
@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+
+  get 'about'   => 'static_pages#about'
+  get 'contact' => 'static_pages#contact'
 
   resources :users, only: [:new, :create]
 

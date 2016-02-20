@@ -26,8 +26,8 @@
             </div>
             <ul class="nav navbar-nav">
               <li><%= link_to "Blog", root_path %></li>
-              <li><%= link_to "About", root_path %></li>
-              <li><%= link_to "Contact", root_path %></li>
+              <li><%= link_to "About", about_path %></li>
+              <li><%= link_to "Contact", contact_path %></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <% if current_user %>
@@ -42,7 +42,7 @@
         </nav>
         </header>
         <div class="col-md-3 col-md-push-9 right_section">
-          <%= search_form_for @search, url: search_posts_path, method: :post do |f| %>
+          <%= search_form_for @q do |f| %>
           <div class="input-group">
            <span class="input-group-btn">
               <div class="actions">
@@ -50,7 +50,7 @@
               </div>
             </span>
              <div class="field">
-             <%= f.text_field :title_cont, class: "form-control" %>
+             <%= f.text_field :content_cont, class: "form-control" %>
            </div>
            </div>
           <% end %>

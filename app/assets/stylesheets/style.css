@@ -55,3 +55,12 @@
 #delete-btn {
 	margin-right: 15px;
 }
+
+#marked_list {
+	margin-left: 50px;
+	list-style-type: square;
+}
+
+#marked_list li {
+	line-height: 25px;
+}

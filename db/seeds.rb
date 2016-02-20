@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+admin = User.create(first_name: 'Admin', last_name: 'Adminov', email: 'admin@email.com', password: '123', password_confirmation: '123', role: 'admin')
 alex = User.create(first_name: 'Alex', last_name: 'Tishchenko', email: 'altivi.prog@gmail.com', password: '123', password_confirmation: '123', role: 'admin')
 first_post = Post.create(title: "Lorem ipsum dolor sit.", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem voluptates, in ipsa laboriosam amet ullam quos architecto debitis. Optio eos, quibusdam architecto distinctio eum illum incidunt autem amet unde reprehenderit dolore, harum recusandae delectus laborum vitae quae. Quisquam rerum ea reprehenderit, voluptatum ipsum delectus temporibus sed! Qui modi quia esse nisi adipisci omnis! Molestiae reiciendis quaerat ab voluptates facere et optio porro, explicabo veritatis, natus odio soluta nihil maiores libero dolor sed magnam, nisi! Dicta nihil aspernatur, beatae voluptate hic soluta sit ex modi possimus quae. Inventore repellat consequuntur, iusto ab libero delectus ratione! Fugiat a vitae eos totam nostrum!")
 second_post = Post.create(title: "Lorem ipsum dolor.", content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae veritatis amet repellat nihil natus earum dolore iure beatae voluptatum quisquam harum illum saepe soluta dolorum voluptatem perspiciatis labore minus omnis autem eveniet facere, dignissimos pariatur, velit nesciunt. Voluptas odio nobis ipsa animi at quia illo itaque nihil, id debitis nesciunt labore excepturi asperiores rem magnam, veritatis, a optio et reprehenderit fugit repellendus reiciendis officia. Quis autem quaerat nihil harum, excepturi magni voluptatibus obcaecati cupiditate soluta perferendis, esse sequi eveniet repudiandae?")
@@ -29,3 +31,10 @@ comment2 = Comment.create(text: "Lorem ipsum dolor sit amet, consectetur adipisi
 comment2 = Comment.create(text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque libero rem, expedita quaerat quos adipisci.", user_id: freida.id, post_id: third_post.id )
 comment2 = Comment.create(text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, enim.", user_id: alex.id, post_id: third_post.id )
 comment2 = Comment.create(text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque minima libero sunt doloribus deleniti, laborum commodi velit modi aspernatur cumque. Voluptate neque vitae sapiente id iure obcaecati aliquam temporibus illo nisi hic, porro excepturi officiis odio voluptates rem, fugit architecto.", user_id: alex.id, post_id: third_post.id )
+
+50.times do |n|
+	title = Faker::Lorem.sentence(1)
+	content = Faker::Lorem.paragraph(35)
+	Post.create(title: title,
+				content: content)
+end

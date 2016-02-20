@@ -2,7 +2,10 @@ class PostsController < ApplicationController
 
 	
 	def index
-		@posts = @search.result
+		@q = Post.ransack(params[:q])
+ 		@posts = @q.result.page(params[:page])
+		# @posts = @search.result.paginate(page: params[:page])
+		#@posts = @search.result
 	end
 
 	def show
@@ -41,9 +44,9 @@ class PostsController < ApplicationController
 
 	private 
 
-	def post_params
-		params.require(:post).permit(:content, :title)
-	end
+		def post_params
+			params.require(:post).permit(:content, :title)
+		end
 
 	# def comments_to_json_hash(comments)
 	# 	@array = Array.new
